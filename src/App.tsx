@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "./App.scss";
 import Footer from "./components/Common/Footer/Footer";
 import Navbar from "./components/Common/Navbar/Navbar";
 import HomePage from "./pages/HomePage/HomePage";
@@ -19,7 +19,7 @@ function App() {
       <Navbar />
       <Router history={history}>
         <Switch>
-          {routes.map((route: { path: string; component: any }) => (
+          {routes.map((route) => (
             <Route
               key={route.path}
               exact
