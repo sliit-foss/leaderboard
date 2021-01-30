@@ -2,7 +2,6 @@ import React from "react";
 import {Header} from "@primer/components";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFacebook, faGithub, faInstagram, faTwitter} from "@fortawesome/free-brands-svg-icons"
-import "./Navbar.css";
 
 function Navbar() {
     return (
