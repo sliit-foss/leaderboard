@@ -19,7 +19,7 @@ function App() {
       <Navbar />
       <Router history={history}>
         <Switch>
-          {routes.map((route: { path: string; component: any }) => (
+          {routes.map((route) => (
             <Route
               key={route.path}
               exact
