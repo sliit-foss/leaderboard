@@ -1,6 +1,8 @@
 import React from 'react';
 import {Header , Avatar , StyledOcticon} from '@primer/components';
 import Logo from '../../../asserts/FOSS.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook , faTwitter , faInstagram , faGithub } from '@fortawesome/free-brands-svg-icons'
 import './Navbar.css';
 
 function Navbar() {
@@ -13,14 +15,18 @@ function Navbar() {
                 </Header.Link>
             </Header.Item>
             <Header.Item full>About</Header.Item>
-            <Header.Item mr={0}>
-                <Avatar
-                src="https://github.com/octocat.png"
-                size={20}
-                square
-                alt="@octocat"
-                />
-            </Header.Item>
+            <Header.Link href="https://github.com/sliit-foss" mr={2}>
+            <FontAwesomeIcon icon={faGithub}/>
+            </Header.Link>
+            <Header.Link mr={2}>
+            <FontAwesomeIcon icon={faFacebook}/>
+            </Header.Link>
+            <Header.Link mr={2}>
+            <FontAwesomeIcon icon={faTwitter}/>
+            </Header.Link>
+            <Header.Link mr={2}>
+            <FontAwesomeIcon icon={faInstagram}/>
+            </Header.Link>
         </Header>
         </>
     );
