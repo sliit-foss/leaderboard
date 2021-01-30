@@ -19,12 +19,13 @@
   },
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
-    "no-unused-vars": "error",
-    "no-unused-expressions": "error",
-    "quotes": ["error", "double"],
+    "no-unused-vars": "warn",
+    "no-unused-expressions": "warn",
+    "quotes": ["warn", "double"],
     "react/jsx-uses-vars": "error",
     "react/jsx-uses-react": "error",
-    "@typescript-eslint/explicit-function-return-type": "off"
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   },
   "settings": {
     "import/resolver": {
