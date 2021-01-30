@@ -7,7 +7,6 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Header } from "@primer/components";
 import React from "react";
-import "./Navbar.scss";
 
 function Navbar() {
   return (
