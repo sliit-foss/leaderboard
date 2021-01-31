@@ -2,7 +2,6 @@ import React from "react";
 import {
   Pagination,
   ButtonPrimary,
-  Button,
   ButtonDanger,
   ButtonOutline,
   Box,
