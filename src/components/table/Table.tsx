@@ -65,7 +65,7 @@ function Table() {
             </Box>
 
             <table className="table table-bordered table-hover">
-              <thead className="thead-dark">
+              <thead className="thead-light">
                 <tr>
                   <th scope="col">Rank</th>
                   <th scope="col">Avatar</th>
@@ -79,7 +79,7 @@ function Table() {
                     <td className="d-flex justify-content-start">
                       <AvatarPair>
                         <Avatar src={r.avatar} size={40} />
-                        <Avatar src="https://avatars.githubusercontent.com/primer" />
+                        <Avatar src="https://avatars.githubusercontent.com/github" />
                       </AvatarPair>{" "}
                       <a
                         className="px-2 "
