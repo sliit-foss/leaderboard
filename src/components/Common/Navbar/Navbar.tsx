@@ -6,8 +6,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import FossLogo from "../../../assets/FOSS.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Header, StyledOcticon } from "@primer/components";
-import { MarkGithubIcon } from "@primer/octicons-react";
+import { Header } from "@primer/components";
 import React from "react";
 
 function Navbar() {
