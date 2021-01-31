@@ -6,9 +6,52 @@ import {
   ButtonDanger,
   ButtonOutline,
   Box,
+  Avatar,
+  AvatarPair,
+  Label,
 } from "@primer/components";
 
+type Contributor = {
+  rank: number;
+  username: string;
+  points: number;
+  avatar: string;
+};
+
 function Table() {
+  const tempArray: Contributor[] = [
+    {
+      avatar: "https://avatars.githubusercontent.com/u/19349315",
+      points: 100,
+      rank: 1,
+      username: "Shehanka",
+    },
+    {
+      avatar: "https://avatars.githubusercontent.com/u/24352487",
+      points: 90,
+      rank: 2,
+      username: "ebonynon",
+    },
+    {
+      avatar: "https://avatars.githubusercontent.com/u/38850236?s=60&v=4",
+      points: 80,
+      rank: 3,
+      username: "Bawanthathilan",
+    },
+    {
+      avatar: "https://avatars.githubusercontent.com/u/37530024?s=60&v=4",
+      points: 70,
+      rank: 4,
+      username: "Safnaj",
+    },
+    {
+      avatar: "https://avatars.githubusercontent.com/u/42801983?s=60&v=4",
+      points: 60,
+      rank: 5,
+      username: "nisalrenuja",
+    },
+  ];
+
   return (
     <>
       <section className="fdb-block">
@@ -24,43 +67,40 @@ function Table() {
             <table className="table table-bordered table-hover">
               <thead className="thead-dark">
                 <tr>
-                  <th scope="col">Username</th>
                   <th scope="col">Rank</th>
+                  <th scope="col">Avatar</th>
                   <th scope="col">Points</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                </tr>
+                {tempArray.map((r) => (
+                  <tr>
+                    <th scope="row">{r.rank}</th>
+                    <td>
+                      <AvatarPair>
+                        <Avatar src={r.avatar} size={40} />
+                        <Avatar src="https://avatars.githubusercontent.com/primer" />
+                      </AvatarPair>{" "}
+                      <a
+                        href={`https://github.com/${r.username}`}
+                        target={"_blank"}
+                      >
+                        {r.username}
+                      </a>
+                    </td>
+                    <td>
+                      <Label variant="medium" bg="#656BFE" m={1}>
+                        {r.points}
+                      </Label>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
           <Box>
             <Pagination
-              pageCount={15}
+              pageCount={10}
               currentPage={1}
               onPageChange={(e) => e.preventDefault()}
             />
