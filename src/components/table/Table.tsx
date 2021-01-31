@@ -1,13 +1,13 @@
 import React from "react";
 import {
-  Pagination,
-  ButtonPrimary,
-  ButtonDanger,
-  ButtonOutline,
-  Box,
   Avatar,
   AvatarPair,
+  Box,
+  ButtonDanger,
+  ButtonOutline,
+  ButtonPrimary,
   Label,
+  Pagination,
 } from "@primer/components";
 
 type Contributor = {
@@ -57,10 +57,10 @@ function Table() {
         <div className="container">
           <div className="container table-responsive py-5">
             <Box mt={2} mb={4}>
-              <ButtonOutline mr={3}>This Month</ButtonOutline>
-              <ButtonDanger mr={3}>Last Month</ButtonDanger>
-              <ButtonOutline mr={3}>All</ButtonOutline>
-              <ButtonPrimary>Board Members</ButtonPrimary>
+              <ButtonOutline m={2}>This Month</ButtonOutline>
+              <ButtonDanger m={2}>Last Month</ButtonDanger>
+              <ButtonOutline m={2}>All</ButtonOutline>
+              <ButtonPrimary m={2}>Board Members</ButtonPrimary>
             </Box>
 
             <table className="table table-bordered table-hover">
