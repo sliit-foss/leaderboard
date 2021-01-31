@@ -58,7 +58,7 @@ function Table() {
         <div className="container">
           <div className="container table-responsive py-5">
             <Box mt={2} mb={4}>
-              <Button mr={3}>This Month</Button>
+              <ButtonOutline mr={3}>This Month</ButtonOutline>
               <ButtonDanger mr={3}>Last Month</ButtonDanger>
               <ButtonOutline mr={3}>All</ButtonOutline>
               <ButtonPrimary>Board Members</ButtonPrimary>
