@@ -2,7 +2,6 @@ import React from "react";
 import {
   Pagination,
   ButtonPrimary,
-  Button,
   ButtonDanger,
   ButtonOutline,
   Box,
@@ -58,14 +57,14 @@ function Table() {
         <div className="container">
           <div className="container table-responsive py-5">
             <Box mt={2} mb={4}>
-              <Button mr={3}>This Month</Button>
+              <ButtonOutline mr={3}>This Month</ButtonOutline>
               <ButtonDanger mr={3}>Last Month</ButtonDanger>
               <ButtonOutline mr={3}>All</ButtonOutline>
               <ButtonPrimary>Board Members</ButtonPrimary>
             </Box>
 
             <table className="table table-bordered table-hover">
-              <thead className="thead-dark">
+              <thead className="thead-light">
                 <tr>
                   <th scope="col">Rank</th>
                   <th scope="col">Avatar</th>
@@ -76,12 +75,13 @@ function Table() {
                 {tempArray.map((r) => (
                   <tr>
                     <th scope="row">{r.rank}</th>
-                    <td>
+                    <td className="d-flex justify-content-start">
                       <AvatarPair>
                         <Avatar src={r.avatar} size={40} />
-                        <Avatar src="https://avatars.githubusercontent.com/primer" />
+                        <Avatar src="https://avatars.githubusercontent.com/github" />
                       </AvatarPair>{" "}
                       <a
+                        className="px-2 "
                         href={`https://github.com/${r.username}`}
                         target={"_blank"}
                       >

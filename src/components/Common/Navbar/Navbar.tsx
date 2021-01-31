@@ -5,7 +5,8 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Header } from "@primer/components";
+import { Header, StyledOcticon } from "@primer/components";
+import { MarkGithubIcon } from "@primer/octicons-react";
 import React from "react";
 
 function Navbar() {
@@ -14,7 +15,8 @@ function Navbar() {
       <Header>
         <Header.Item>
           <Header.Link href="#" fontSize={2}>
-            <span>SLIIT FOSS GitHub Leaderboad</span>
+            <StyledOcticon icon={MarkGithubIcon} size={32} mr={2} />
+            <span>SLIIT FOSS GitHub Leaderboard</span>
           </Header.Link>
         </Header.Item>
         <Header.Item full>About</Header.Item>
