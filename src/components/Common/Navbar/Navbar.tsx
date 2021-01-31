@@ -14,22 +14,30 @@ function Navbar() {
     <>
       <Header>
         <Header.Item>
-          <Header.Link href="#" fontSize={2}>
+          <Header.Link href="/" fontSize={2}>
             <StyledOcticon icon={MarkGithubIcon} size={32} mr={2} />
             <span>SLIIT FOSS GitHub Leaderboard</span>
           </Header.Link>
         </Header.Item>
-        <Header.Item full>About</Header.Item>
-        <Header.Link href="https://github.com/sliit-foss" mr={2}>
+        <Header.Item full />
+        <Header.Link href="https://github.com/sliit-foss" target="blank" mr={2}>
           <FontAwesomeIcon icon={faGithub} />
         </Header.Link>
-        <Header.Link href="https://www.facebook.com/sliitfoss" mr={2}>
+        <Header.Link
+          href="https://www.facebook.com/sliitfoss"
+          target="blank"
+          mr={2}
+        >
           <FontAwesomeIcon icon={faFacebook} />
         </Header.Link>
-        <Header.Link href="https://twitter.com/fosssliit?lang=en" mr={2}>
+        <Header.Link href="https://twitter.com/fosssliit" target="blank" mr={2}>
           <FontAwesomeIcon icon={faTwitter} />
         </Header.Link>
-        <Header.Link href="https://www.instagram.com/sliitfoss" mr={2}>
+        <Header.Link
+          href="https://www.instagram.com/sliitfoss"
+          target="blank"
+          mr={2}
+        >
           <FontAwesomeIcon icon={faInstagram} />
         </Header.Link>
       </Header>
