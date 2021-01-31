@@ -6,7 +6,8 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import FossLogo from "../../../assets/FOSS.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Header } from "@primer/components";
+import { Header, StyledOcticon } from "@primer/components";
+import { MarkGithubIcon } from "@primer/octicons-react";
 import React from "react";
 
 function Navbar() {
@@ -14,15 +15,9 @@ function Navbar() {
     <>
       <Header>
         <Header.Item>
-          <img
-            className="position-absolute"
-            src={FossLogo}
-            width="80"
-            height="80"
-            alt=""
-          />
-          <Header.Link href="#" fontSize={2} pl={10}>
-            <span>SLIIT FOSS GitHub Leaderboad</span>
+          <Header.Link href="#" fontSize={2}>
+            <StyledOcticon icon={MarkGithubIcon} size={32} mr={2} />
+            <span>SLIIT FOSS GitHub Leaderboard</span>
           </Header.Link>
         </Header.Item>
         <Header.Item full>About</Header.Item>
