@@ -8,8 +8,6 @@ import {
   Box,
 } from "@primer/components";
 
-import { SearchIcon } from "@primer/octicons-react";
-
 function Table() {
   return (
     <>
