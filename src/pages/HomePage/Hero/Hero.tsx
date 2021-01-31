@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid } from "@primer/components";
+import { Box, Grid, StateLabel } from "@primer/components";
 import GitSvg from "../../../assets/git.svg";
 function Hero() {
   return (
@@ -13,7 +13,7 @@ function Hero() {
                   <img alt="image" className="img-fluid" src={GitSvg} />
                 </div>
                 <div className="col-12 col-md-6 col-lg-5 ml-md-auto text-left">
-                  <h1>SLIIT FOSS GitHub Leaderboard</h1>
+                  <h1> SLIIT FOSS GitHub Leaderboard</h1>
                   <p>
                     The following leaderboard shows the top github contributors
                     of SLIIT FOSS. You can join this leaderboard by sending a
@@ -26,7 +26,11 @@ function Hero() {
                     Scores will automatically updates when merging a Pull
                     request.
                     <br />
-                    <b>1 merged PR = 10 Points</b>
+                    <b>
+                      <StateLabel mt={3} status="pullMerged">
+                        1 merged PR = 10 Points
+                      </StateLabel>
+                    </b>
                   </p>
                 </div>
               </div>
