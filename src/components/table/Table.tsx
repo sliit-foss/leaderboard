@@ -76,12 +76,13 @@ function Table() {
                 {tempArray.map((r) => (
                   <tr>
                     <th scope="row">{r.rank}</th>
-                    <td>
+                    <td className="d-flex justify-content-start">
                       <AvatarPair>
                         <Avatar src={r.avatar} size={40} />
                         <Avatar src="https://avatars.githubusercontent.com/primer" />
                       </AvatarPair>{" "}
                       <a
+                        className="px-2 "
                         href={`https://github.com/${r.username}`}
                         target={"_blank"}
                       >
