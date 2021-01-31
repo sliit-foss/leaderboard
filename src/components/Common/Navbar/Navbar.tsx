@@ -21,13 +21,13 @@ function Navbar() {
         <Header.Link href="https://github.com/sliit-foss" mr={2}>
           <FontAwesomeIcon icon={faGithub} />
         </Header.Link>
-        <Header.Link mr={2}>
+        <Header.Link href="https://www.facebook.com/sliitfoss" mr={2}>
           <FontAwesomeIcon icon={faFacebook} />
         </Header.Link>
-        <Header.Link mr={2}>
+        <Header.Link href="https://twitter.com/fosssliit?lang=en" mr={2}>
           <FontAwesomeIcon icon={faTwitter} />
         </Header.Link>
-        <Header.Link mr={2}>
+        <Header.Link href="https://www.instagram.com/sliitfoss" mr={2}>
           <FontAwesomeIcon icon={faInstagram} />
         </Header.Link>
       </Header>
