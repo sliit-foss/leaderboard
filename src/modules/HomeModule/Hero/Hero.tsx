@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Grid, StateLabel } from "@primer/components";
 import GitSvg from "../../../assets/git.svg";
+import "../../../scss/_hero.scss";
 
 function Hero() {
   return (
