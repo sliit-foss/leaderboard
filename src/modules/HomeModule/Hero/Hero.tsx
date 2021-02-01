@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Grid, StateLabel } from "@primer/components";
 import GitSvg from "../../../assets/git.svg";
+
 function Hero() {
   return (
     <>
@@ -17,10 +18,10 @@ function Hero() {
                   <p>
                     The following leaderboard shows the top github contributors
                     of SLIIT FOSS. You can join this leaderboard by sending a
-                    Pull Request to any repository within
+                    Pull Request to any repository within{" "}
                     <strong>
                       <a href="https://github.com/sliit-foss/" target="_blank">
-                        SLIIT FOSS Github Organization.
+                        SLIIT FOSS GitHub Organization.
                       </a>
                     </strong>
                     Scores will automatically updates when merging a Pull
