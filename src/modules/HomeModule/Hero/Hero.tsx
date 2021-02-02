@@ -22,7 +22,7 @@ function Hero() {
                     Pull Request to any repository within{" "}
                     <strong>
                       <a href="https://github.com/sliit-foss/" target="_blank">
-                        SLIIT FOSS GitHub Organization.
+                        SLIIT FOSS GitHub Organization.{" "}
                       </a>
                     </strong>
                     Scores will automatically updates when merging a Pull
