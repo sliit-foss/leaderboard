@@ -1,0 +1,46 @@
+@mixin sticky-footer(
+  $footer-height,
+  $wrapper-selector: unquote("#wrapper"),
+  $container-selector: unquote("#container"),
+  $footer-selector: unquote("#footer")
+) {
+  #{$wrapper-selector} {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin-bottom: -$footer-height;
+    #{$container-selector} {
+      padding: 0 0 $footer-height 0;
+    }
+  }
+  #{$footer-selector} {
+    height: $footer-height;
+  }
+}
+@include sticky-footer(30px);
+@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:300);
+
+#wrapper,
+#container,
+#footer {
+  width: 100%;
+}
+#wrapper {
+  background: black;
+}
+#footer {
+  margin: 0;
+  padding: 5% 0 0;
+  font-family: "Alegreya Sans", sans-serif;
+  font-size: 20px;
+  color: white;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+#footer {
+  background: black;
+}
+#hyper {
+  color: white;
+  text-decoration: none;
+}
