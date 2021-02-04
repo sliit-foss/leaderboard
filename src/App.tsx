@@ -24,6 +24,7 @@ function App() {
   const [theme, setTheme] = useState("light");
 
   const themeToggler = () => {
+    // eslint-disable-next-line no-unused-expressions
     theme === "light" ? setTheme("dark") : setTheme("light");
   };
   return (
