@@ -1,14 +1,5 @@
-import React from "react";
-import {
-  Avatar,
-  AvatarPair,
-  Box,
-  ButtonDanger,
-  ButtonOutline,
-  ButtonPrimary,
-  Label,
-  Pagination,
-} from "@primer/components";
+import { Avatar, AvatarPair, Box, Label, Pagination } from "@primer/components";
+import React, { useState } from "react";
 import { useGetAllContributors } from "../../queries/useGetContributors";
 
 function Table() {
@@ -19,17 +10,23 @@ function Table() {
     isError,
   } = useGetAllContributors();
 
+  const [currentPage] = useState<number>(1);
+
+  const contributorsSize: number = contributorsAllList?.length as number | 0;
+  const pageCount: number = contributorsSize / 10;
+
   return (
     <>
       <section className="fdb-block">
         <div className="container">
           <div className="container table-responsive py-5">
-            <Box mt={2} mb={4}>
-              <ButtonOutline m={2}>This Month</ButtonOutline>
-              <ButtonDanger m={2}>Last Month</ButtonDanger>
-              <ButtonOutline m={2}>All</ButtonOutline>
-              <ButtonPrimary m={2}>Board Members</ButtonPrimary>
-            </Box>
+            {/*TODO: Need to Impl*/}
+            {/*<Box mt={2} mb={4}>*/}
+            {/*  <ButtonOutline m={2}>This Month</ButtonOutline>*/}
+            {/*  <ButtonDanger m={2}>Last Month</ButtonDanger>*/}
+            {/*  <ButtonOutline m={2}>All</ButtonOutline>*/}
+            {/*  <ButtonPrimary m={2}>Board Members</ButtonPrimary>*/}
+            {/*</Box>*/}
 
             <table className="table table-bordered table-hover">
               <thead className="thead-light">
@@ -83,8 +80,8 @@ function Table() {
           </div>
           <Box>
             <Pagination
-              pageCount={10}
-              currentPage={1}
+              pageCount={pageCount | 1}
+              currentPage={currentPage | 1}
               onPageChange={(e) => e.preventDefault()}
             />
           </Box>
