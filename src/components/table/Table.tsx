@@ -1,14 +1,5 @@
+import { Avatar, AvatarPair, Box, Label, Pagination } from "@primer/components";
 import React, { useState } from "react";
-import {
-  Avatar,
-  AvatarPair,
-  Box,
-  ButtonDanger,
-  ButtonOutline,
-  ButtonPrimary,
-  Label,
-  Pagination,
-} from "@primer/components";
 import { useGetAllContributors } from "../../queries/useGetContributors";
 
 function Table() {
@@ -19,7 +10,7 @@ function Table() {
     isError,
   } = useGetAllContributors();
 
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [currentPage] = useState<number>(1);
 
   const contributorsSize: number = contributorsAllList?.length as number | 0;
   const pageCount: number = contributorsSize / 10;
