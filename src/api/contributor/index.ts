@@ -1,13 +1,3 @@
-import { apiInstance } from "../apiInstance";
+import * as Contributor_API from "./contributor.request";
 
-export async function getAllContributors() {
-  const PATH = "/contributors";
-  try {
-    const res = await apiInstance.get(PATH);
-    const apiRes = res.data;
-
-    return apiRes as [];
-  } catch (e) {
-    throw new Error("Failed to get All products");
-  }
-}
+export { Contributor_API };
