@@ -3,11 +3,13 @@ import { createGlobalStyle } from "styled-components";
 export const LightTheme = {
   body: "#fff",
   fontColor: "#000",
+  tableColor: "#fff",
 };
 
 export const DarkTheme = {
   body: "#171F24",
   fontColor: "#fff",
+  tableColor: "#1C2A35",
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -30,5 +32,8 @@ export const GlobalStyles = createGlobalStyle`
     }
     .layer{
         background-color: ${(props) => props.theme.body};
+    }
+    table{
+        background-color: ${(props) => props.theme.tableColor};
     }
 `;

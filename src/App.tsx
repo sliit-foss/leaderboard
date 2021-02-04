@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.scss";
+import "../src/scss/toggleBtn.scss";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Footer from "./components/Common/Footer/Footer";
 import Navbar from "./components/Common/Navbar/Navbar";
@@ -9,7 +10,7 @@ import { Router, Route, Switch } from "react-router-dom";
 import { routes } from "./routes/AppRoutes";
 import styled, { ThemeProvider } from "styled-components";
 import { LightTheme, DarkTheme, GlobalStyles } from "./themes";
-import DarkModeToggle from "react-dark-mode-toggle";
+import Toggle from "react-toggle";
 /**
  * Create history object to pass into Router,
  * to allow navigating outside of react
@@ -29,8 +30,11 @@ function App() {
     <div>
       <QueryClientProvider client={queryClient}>
         <Navbar />
-        <DarkModeToggle onChange={themeToggler} checked={theme} size={80} />
-
+        <Toggle
+          className=" mt-2 ml-2"
+          id="cheese-status"
+          onChange={themeToggler}
+        />
         <ThemeProvider theme={theme === "light" ? LightTheme : DarkTheme}>
           <GlobalStyles />
           <StyledApp>
