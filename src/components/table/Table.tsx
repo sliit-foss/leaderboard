@@ -9,47 +9,15 @@ import {
   Label,
   Pagination,
 } from "@primer/components";
-
-type Contributor = {
-  rank: number;
-  username: string;
-  points: number;
-  avatar: string;
-};
+import { useGetAllContributors } from "../../queries/useGetContributors";
 
 function Table() {
-  const tempArray: Contributor[] = [
-    {
-      avatar: "https://avatars.githubusercontent.com/u/19349315",
-      points: 100,
-      rank: 1,
-      username: "Shehanka",
-    },
-    {
-      avatar: "https://avatars.githubusercontent.com/u/24352487",
-      points: 90,
-      rank: 2,
-      username: "ebonynon",
-    },
-    {
-      avatar: "https://avatars.githubusercontent.com/u/38850236?s=60&v=4",
-      points: 80,
-      rank: 3,
-      username: "Bawanthathilan",
-    },
-    {
-      avatar: "https://avatars.githubusercontent.com/u/37530024?s=60&v=4",
-      points: 70,
-      rank: 4,
-      username: "Safnaj",
-    },
-    {
-      avatar: "https://avatars.githubusercontent.com/u/42801983?s=60&v=4",
-      points: 60,
-      rank: 5,
-      username: "nisalrenuja",
-    },
-  ];
+  const {
+    data: contributorsAllList,
+    isSuccess,
+    isLoading,
+    isError,
+  } = useGetAllContributors();
 
   return (
     <>
@@ -67,35 +35,50 @@ function Table() {
               <thead className="thead-light">
                 <tr>
                   <th scope="col">Rank</th>
-                  <th scope="col">Avatar</th>
+                  <th scope="col">Contributor</th>
                   <th scope="col">Points</th>
                 </tr>
               </thead>
-              <tbody>
-                {tempArray.map((r) => (
-                  <tr>
-                    <th scope="row">{r.rank}</th>
-                    <td className="d-flex justify-content-start">
-                      <AvatarPair>
-                        <Avatar src={r.avatar} size={40} />
-                        <Avatar src="https://avatars.githubusercontent.com/github" />
-                      </AvatarPair>{" "}
-                      <a
-                        className="px-2 "
-                        href={`https://github.com/${r.username}`}
-                        target={"_blank"}
-                      >
-                        {r.username}
-                      </a>
-                    </td>
-                    <td>
-                      <Label variant="medium" bg="#656BFE" m={1}>
-                        {r.points}
-                      </Label>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
+              {isLoading && (
+                <>
+                  <span className={"anim-pulse"} style={{ fontSize: "1rem" }}>
+                    Loading
+                  </span>
+                  <span className="AnimatedEllipsis" />
+                </>
+              )}
+              {isError && (
+                <div className="flash mt-3 flash-error">
+                  Failed to get contributors
+                </div>
+              )}
+              {isSuccess && (
+                <tbody>
+                  {contributorsAllList?.map((r, i) => (
+                    <tr>
+                      <th scope="row">{i + 1}</th>
+                      <td className="d-flex justify-content-start">
+                        <AvatarPair>
+                          <Avatar src={r?.url} size={40} />
+                          <Avatar src="https://avatars.githubusercontent.com/github" />
+                        </AvatarPair>{" "}
+                        <a
+                          className="px-2 "
+                          href={`https://github.com/${r?.login}`}
+                          target={"_blank"}
+                        >
+                          {r?.login}
+                        </a>
+                      </td>
+                      <td>
+                        <Label variant="medium" bg="#656BFE" m={1}>
+                          {r?.points}
+                        </Label>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              )}
             </table>
           </div>
           <Box>
