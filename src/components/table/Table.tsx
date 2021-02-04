@@ -41,7 +41,9 @@ function Table() {
               </thead>
               {isLoading && (
                 <>
-                  <span>Loading</span>
+                  <span className={"anim-pulse"} style={{ fontSize: "1rem" }}>
+                    Loading
+                  </span>
                   <span className="AnimatedEllipsis" />
                 </>
               )}
