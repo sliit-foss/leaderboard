@@ -17,7 +17,11 @@ function Footer() {
               </p>
 
               <p className="h3 mt-4 mb-5">
-                <ButtonPrimary>Explore trending repos</ButtonPrimary>
+                <ButtonPrimary>
+                  <a id="explore" href="https://github.com/sliit-foss">
+                    Explore trending repos
+                  </a>
+                </ButtonPrimary>
               </p>
             </div>
           </div>
