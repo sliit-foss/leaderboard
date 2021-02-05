@@ -27,6 +27,9 @@ export const GlobalStyles = createGlobalStyle`
     h1{
         color:${(props) => props.theme.fontColor};
     }
+    p{
+        color:${(props) => props.theme.fontColor};
+    }
     .make-contribution{
         background-color: ${(props) => props.theme.body};
     }
