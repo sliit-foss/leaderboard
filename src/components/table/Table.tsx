@@ -67,6 +67,11 @@ function Table() {
                         >
                           {r?.login}
                         </a>
+                        {r?.login === "dependabot" && (
+                          <p className="text-left text-italic">
+                            : At least make contributions than I do!
+                          </p>
+                        )}
                       </td>
                       <td>
                         <Label variant="medium" bg="#656BFE" m={1}>
