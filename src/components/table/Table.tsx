@@ -1,6 +1,7 @@
 import { Avatar, AvatarPair, Box, Label, Pagination } from "@primer/components";
 import React, { useState } from "react";
 import { useGetAllContributors } from "../../queries/useGetContributors";
+import Loader from "../../assets/loader.gif";
 
 function Table() {
   const {
@@ -38,8 +39,8 @@ function Table() {
               </thead>
               {isLoading && (
                 <>
-                  <span className={"anim-pulse"} style={{ fontSize: "1rem" }}>
-                    Loading
+                  <span className={"anim-pulse"}>
+                    <img src={Loader} width="20px" alt="" />
                   </span>
                   <span className="AnimatedEllipsis" />
                 </>
