@@ -11,6 +11,8 @@ import { routes } from "./routes/AppRoutes";
 import styled, { ThemeProvider } from "styled-components";
 import { LightTheme, DarkTheme, GlobalStyles } from "./themes";
 import Toggle from "react-toggle";
+import { Flex } from "@primer/components";
+
 /**
  * Create history object to pass into Router,
  * to allow navigating outside of react
@@ -31,11 +33,15 @@ function App() {
     <div>
       <QueryClientProvider client={queryClient}>
         <Navbar />
-        <Toggle
-          className=" mt-2 ml-2"
-          id="cheese-status"
-          onChange={themeToggler}
-        />
+        <Flex
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Toggle className="mt-5" id="cheese-status" onChange={themeToggler} />
+        </Flex>
         <ThemeProvider theme={theme === "light" ? LightTheme : DarkTheme}>
           <GlobalStyles />
           <StyledApp>
