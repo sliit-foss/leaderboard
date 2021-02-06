@@ -56,7 +56,11 @@ function Table() {
                     <tr>
                       <th scope="row">{i + 1}</th>
                       <td className="d-flex justify-content-start">
-                        <AvatarPair>
+                        <AvatarPair
+                          className={
+                            r?.login === "dependabot" ? "anim-pulse" : ""
+                          }
+                        >
                           <Avatar src={r?.url} size={40} />
                           <Avatar src="https://avatars.githubusercontent.com/github" />
                         </AvatarPair>{" "}
