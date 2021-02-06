@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./App.scss";
 import "../src/scss/toggleBtn.scss";
 import { QueryClient, QueryClientProvider } from "react-query";
