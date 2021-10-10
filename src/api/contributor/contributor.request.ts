@@ -2,7 +2,7 @@ import { Contributor } from "../../models/contributor.model";
 import { apiInstance } from "../apiInstance";
 
 export async function getAllContributors() {
-  const PATH = "/contributors";
+  const PATH = "/contributors/leaderboard";
   try {
     const res = await apiInstance.get(PATH);
     const apiRes = res.data;
