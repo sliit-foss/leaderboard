@@ -11,7 +11,7 @@ addResponseInterceptor(apiInstance);
 
 apiInstance.interceptors.request.use(
   async function (config) {
-    config.baseURL = "https://sliit-foss-leaderboard-api.herokuapp.com";
+    config.baseURL = "https://leaderboard-api-x.herokuapp.com/api/v1";
     return config;
   },
   function (error) {
