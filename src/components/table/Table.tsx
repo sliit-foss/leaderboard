@@ -1,5 +1,5 @@
 import { Avatar, AvatarPair, Box, Label, Pagination } from "@primer/components";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useGetAllContributors } from "../../queries/useGetContributors";
 import Loader from "../../assets/loader.gif";
 

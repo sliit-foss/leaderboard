@@ -11,7 +11,7 @@ addResponseInterceptor(apiInstance);
 
 apiInstance.interceptors.request.use(
   async function (config) {
-    config.baseURL = "https://leaderboard-api-x.herokuapp.com/api/v1";
+    config.baseURL = "https://serverless-iota-indol.vercel.app/api";
     return config;
   },
   function (error) {
