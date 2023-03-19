@@ -11,7 +11,7 @@ addResponseInterceptor(apiInstance);
 
 apiInstance.interceptors.request.use(
   async function (config) {
-    config.baseURL = "https://serverless-iota-indol.vercel.app/api";
+    config.baseURL = "https://api.sliitfoss.org";
     return config;
   },
   function (error) {
