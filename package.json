@@ -16,7 +16,6 @@
     "@primer/components": "23.0.2",
     "@primer/octicons-react": "11.2.0",
     "@testing-library/jest-dom": "5.11.9",
-    "@testing-library/react": "11.2.3",
     "@testing-library/user-event": "12.6.2",
     "@types/jest": "26.0.20",
     "@types/node": "12.19.15",
@@ -25,7 +24,7 @@
     "axios": "0.21.1",
     "cookies": "0.8.0",
     "eslint": "7.18.0",
-    "history": "5.0.0",
+    "history": "4.0.0",
     "husky": "4.3.8",
     "prettier": "2.2.1",
     "react": "17.0.1",
@@ -41,6 +40,7 @@
     "web-vitals": "0.2.4"
   },
   "devDependencies": {
+    "@testing-library/react": "11.2.3",
     "@types/react-router-dom": "5.1.7",
     "@types/react-toggle": "4.0.2",
     "lint-staged": "10.5.3",

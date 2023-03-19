@@ -1,18 +1,17 @@
-import React from "react";
-import "./App.scss";
-import "../src/scss/toggleBtn.scss";
+import { createHashHistory } from "history";
+import { Router, Route, Switch } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { Flex } from "@primer/components";
+import styled, { ThemeProvider } from "styled-components";
+import Toggle from "react-toggle";
+import useLocalState from "use-local-storage-state";
 import Footer from "./components/Common/Footer/Footer";
 import Navbar from "./components/Common/Navbar/Navbar";
 import HomePage from "./pages/HomePage/HomePage";
-import { createHashHistory } from "history";
-import { Router, Route, Switch } from "react-router-dom";
 import { routes } from "./routes/AppRoutes";
-import styled, { ThemeProvider } from "styled-components";
 import { LightTheme, DarkTheme, GlobalStyles } from "./themes";
-import Toggle from "react-toggle";
-import { Flex } from "@primer/components";
-import useLocalState from "use-local-storage-state";
+import "./App.scss";
+import "../src/scss/toggleBtn.scss";
 
 /**
  * Create history object to pass into Router,
@@ -27,7 +26,6 @@ function App() {
   const [theme, setTheme] = useLocalState("theme", "light");
 
   const themeToggler = () => {
-    // eslint-disable-next-line no-unused-expressions
     theme === "light" ? setTheme("dark") : setTheme("light");
   };
 
