@@ -25,6 +25,9 @@ function Table() {
     return contributorsAllList.slice(startIndex, endIndex);
   }, [contributorsAllList, currentPage]);
 
+  // Create empty rows to always show 10 rows
+  const emptyRowsCount = itemsPerPage - paginatedContributors.length;
+
   return (
     <>
       <section className="fdb-block">
@@ -109,6 +112,14 @@ function Table() {
                       </tr>
                     );
                   })}
+                  {/* Add empty rows to maintain consistent table height */}
+                  {Array.from({ length: emptyRowsCount }).map((_, i) => (
+                    <tr key={`empty-${i}`} style={{ height: "73px" }}>
+                      <th scope="row" style={{ opacity: 0.3 }}>-</th>
+                      <td style={{ opacity: 0.3 }}>-</td>
+                      <td style={{ opacity: 0.3 }}>-</td>
+                    </tr>
+                  ))}
                 </tbody>
               )}
             </table>
