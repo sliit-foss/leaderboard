@@ -1,0 +1,28 @@
+.pending-prs-section {
+  background-color: #f6f8fa;
+
+  .pr-title {
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    color: #0969da;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .text-muted {
+    color: #57606a;
+    font-size: 14px;
+  }
+
+  a {
+    color: #0969da;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

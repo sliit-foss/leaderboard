@@ -1,5 +1,5 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Box } from "@primer/react";
 import styled, { ThemeProvider } from "styled-components";
 import Toggle from "react-toggle";

@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import { Contributor_API } from "../api/contributor";
 
 const CONTRIBUTORS_ALL_LIST = "CONTRIBUTORS_ALL_LIST";
