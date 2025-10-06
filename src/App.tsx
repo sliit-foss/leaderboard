@@ -8,7 +8,7 @@ import Footer from "./components/Common/Footer/Footer";
 import Navbar from "./components/Common/Navbar/Navbar";
 import HomePage from "./pages/HomePage/HomePage";
 import { routes } from "./routes/AppRoutes";
-// @ts-ignore
+// @ts-expect-error - JS module without types
 import { LightTheme, DarkTheme, GlobalStyles } from "./themes.js";
 import "./App.scss";
 import "../src/scss/toggleBtn.scss";
@@ -18,12 +18,16 @@ const queryClient = new QueryClient();
 const StyledApp = styled.div``;
 
 function App() {
-  const [theme, setTheme] = useLocalState("theme", {
+  const [theme, setTheme] = useLocalState<string>("theme", {
     defaultValue: "light"
   });
 
   const themeToggler = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
+    if (theme === "light") {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
   };
 
   return (

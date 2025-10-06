@@ -1,6 +1,5 @@
 import { AxiosInstance } from "axios";
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function addResponseInterceptor(instance: AxiosInstance) {
   instance.interceptors.response.use(
     function onValidResponse(response) {

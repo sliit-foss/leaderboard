@@ -52,7 +52,7 @@ function Table() {
               )}
               {isSuccess && (
                 <tbody>
-                  {contributorsAllList?.map((r: any, i: number) => (
+                  {contributorsAllList?.map((r, i: number) => (
                     <tr key={r?.login}>
                       <th scope="row">{i + 1}</th>
                       <td className="d-flex justify-content-start">
