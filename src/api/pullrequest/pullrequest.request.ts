@@ -10,9 +10,9 @@ interface GitHubSearchResponse {
 }
 
 export const getPendingPRs = async (): Promise<PullRequest[]> => {
-  // Fetch all open PRs from the sliit-foss organization
+  // Fetch all open PRs from the sliit-foss organization, excluding dependabot
   const response = await axios.get<GitHubSearchResponse>(
-    `${GITHUB_API_BASE_URL}/search/issues?q=org:${ORG_NAME}+type:pr+state:open&sort=created&order=desc&per_page=100`
+    `${GITHUB_API_BASE_URL}/search/issues?q=org:${ORG_NAME}+type:pr+state:open+-author:app/dependabot+-author:dependabot&sort=created&order=desc&per_page=100`
   );
   return response.data.items;
 };
