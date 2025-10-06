@@ -1,4 +1,4 @@
-import { HashRouter, Route, Routes, useLocation } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Box } from "@primer/react";
 import styled, { ThemeProvider } from "styled-components";
@@ -78,6 +78,9 @@ function App() {
     setTheme(theme === "light" ? "dark" : "light");
   };
 
+  // Get base path from Vite config (set during build for PR previews)
+  const basename = import.meta.env.BASE_URL;
+
   return (
     <div data-theme={theme}>
       <QueryClientProvider client={queryClient}>
@@ -102,9 +105,9 @@ function App() {
             >
               <ThemeToggle theme={theme} onToggle={themeToggler} />
             </Box>
-            <HashRouter>
+            <BrowserRouter basename={basename}>
               <AnimatedRoutes />
-            </HashRouter>
+            </BrowserRouter>
             <Footer />
           </StyledApp>
         </ThemeProvider>
