@@ -7,7 +7,6 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Header } from "@primer/react";
 import { MarkGithubIcon } from "@primer/octicons-react";
-import React from "react";
 import "../../../scss/_natbar.scss";
 
 function Navbar() {
@@ -15,8 +14,8 @@ function Navbar() {
     <>
       <Header className="sticky-header">
         <Header.Item>
-          <Header.Link href="/" fontSize={2} sx={{ display: "flex", alignItems: "center" }}>
-            <MarkGithubIcon size={32} style={{ marginRight: "8px" }} />
+          <Header.Link href="/" sx={{ display: "flex", alignItems: "center", fontSize: 2, gap: 2 }}>
+            <MarkGithubIcon size={32} />
             <span>SLIIT FOSS GitHub Leaderboard</span>
           </Header.Link>
         </Header.Item>

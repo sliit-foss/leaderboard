@@ -3,7 +3,9 @@ import { getPendingPRs } from "../api/pullrequest";
 import { PullRequest } from "../models/pullrequest.model";
 
 export const useGetPendingPRs = () => {
-  return useQuery<PullRequest[]>("pendingPRs", getPendingPRs, {
+  return useQuery<PullRequest[]>({
+    queryKey: ["pendingPRs"],
+    queryFn: getPendingPRs,
     refetchOnWindowFocus: false,
     retry: 1,
   });

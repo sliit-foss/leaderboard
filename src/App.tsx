@@ -8,7 +8,8 @@ import Footer from "./components/Common/Footer/Footer";
 import Navbar from "./components/Common/Navbar/Navbar";
 import HomePage from "./pages/HomePage/HomePage";
 import { routes } from "./routes/AppRoutes";
-import { LightTheme, DarkTheme, GlobalStyles } from "./themes";
+// @ts-ignore
+import { LightTheme, DarkTheme, GlobalStyles } from "./themes.js";
 import "./App.scss";
 import "../src/scss/toggleBtn.scss";
 
@@ -17,7 +18,7 @@ const queryClient = new QueryClient();
 const StyledApp = styled.div``;
 
 function App() {
-  const [theme, setTheme] = useLocalState("theme", "light");
+  const [theme, setTheme] = useLocalState<string>("theme", { defaultValue: "light" });
 
   const themeToggler = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");

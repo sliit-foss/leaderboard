@@ -44,7 +44,7 @@ function PendingPRs() {
 
           {isSuccess && pendingPRs && pendingPRs.length > 0 && (
             <Timeline>
-              {pendingPRs.map((pr) => (
+              {pendingPRs.map((pr: any) => (
                 <Timeline.Item key={pr.id}>
                   <Timeline.Badge>
                     <GitPullRequestIcon />

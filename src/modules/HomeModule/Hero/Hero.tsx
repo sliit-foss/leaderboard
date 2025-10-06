@@ -1,12 +1,11 @@
-import React from "react";
-import { Box, Grid, StateLabel } from "@primer/components";
+import { Box, Label } from "@primer/react";
 import GitSvg from "../../../assets/HeroVector.svg";
 import "../../../scss/_hero.scss";
 
 function Hero() {
   return (
     <>
-      <Grid mt={5} gridTemplateColumns="repeat(1, auto)">
+      <Box sx={{ mt: 5 }}>
         <Box p={0}>
           <section className="fdb-block">
             <div className="container">
@@ -21,7 +20,7 @@ function Hero() {
                     of SLIIT FOSS. You can join this leaderboard by sending a
                     Pull Request to any repository within{" "}
                     <strong>
-                      <a href="https://github.com/sliit-foss/" target="_blank">
+                      <a href="https://github.com/sliit-foss/" target="_blank" rel="noreferrer">
                         SLIIT FOSS GitHub Organization.{" "}
                       </a>
                     </strong>
@@ -29,9 +28,9 @@ function Hero() {
                     request.
                     <br />
                     <b>
-                      <StateLabel mt={3} status="pullMerged">
+                      <Label variant="success" sx={{ mt: 3 }}>
                         1 merged PR = 10 Points
-                      </StateLabel>
+                      </Label>
                     </b>
                   </p>
                 </div>
@@ -39,7 +38,7 @@ function Hero() {
             </div>
           </section>
         </Box>
-      </Grid>
+      </Box>
     </>
   );
 }
