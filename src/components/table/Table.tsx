@@ -1,4 +1,4 @@
-import { Avatar, AvatarPair, Box, Label, Pagination } from "@primer/components";
+import { Avatar, AvatarStack, Box, Label, Pagination } from "@primer/react";
 import { useState } from "react";
 import { useGetAllContributors } from "../../queries/useGetContributors";
 import Loader from "../../assets/loader.gif";
@@ -23,10 +23,10 @@ function Table() {
           <div className="container table-responsive py-5">
             {/*TODO: Need to Impl*/}
             {/*<Box mt={2} mb={4}>*/}
-            {/*  <ButtonOutline m={2}>This Month</ButtonOutline>*/}
-            {/*  <ButtonDanger m={2}>Last Month</ButtonDanger>*/}
-            {/*  <ButtonOutline m={2}>All</ButtonOutline>*/}
-            {/*  <ButtonPrimary m={2}>Board Members</ButtonPrimary>*/}
+            {/*  <Button variant="default" sx={{ m: 2 }}>This Month</Button>*/}
+            {/*  <Button variant="danger" sx={{ m: 2 }}>Last Month</Button>*/}
+            {/*  <Button variant="default" sx={{ m: 2 }}>All</Button>*/}
+            {/*  <Button variant="primary" sx={{ m: 2 }}>Board Members</Button>*/}
             {/*</Box>*/}
 
             <table className="table table-bordered table-hover">
@@ -53,21 +53,22 @@ function Table() {
               {isSuccess && (
                 <tbody>
                   {contributorsAllList?.map((r, i) => (
-                    <tr>
+                    <tr key={r?.login}>
                       <th scope="row">{i + 1}</th>
                       <td className="d-flex justify-content-start">
-                        <AvatarPair
+                        <AvatarStack
                           className={
                             r?.login === "dependabot" ? "anim-pulse" : ""
                           }
                         >
                           <Avatar src={r?.url} size={40} />
-                          <Avatar src="https://avatars.githubusercontent.com/github" />
-                        </AvatarPair>{" "}
+                          <Avatar src="https://avatars.githubusercontent.com/github" size={40} />
+                        </AvatarStack>{" "}
                         <a
                           className="px-2 "
                           href={`https://github.com/${r?.login}`}
                           target={"_blank"}
+                          rel="noreferrer"
                         >
                           {r?.login}
                         </a>
@@ -78,7 +79,7 @@ function Table() {
                         )}
                       </td>
                       <td>
-                        <Label variant="medium" bg="#656BFE" m={1}>
+                        <Label sx={{ bg: "#656BFE", m: 1 }}>
                           {r?.points}
                         </Label>
                       </td>

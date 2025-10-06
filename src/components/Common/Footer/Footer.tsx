@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonPrimary } from "@primer/components";
+import { Button } from "@primer/react";
 
 function Footer() {
   return (
@@ -17,11 +17,9 @@ function Footer() {
               </p>
 
               <p className="h3 mt-4 mb-5">
-                <ButtonPrimary>
-                  <a id="explore" href="https://github.com/sliit-foss">
-                    Explore trending repos
-                  </a>
-                </ButtonPrimary>
+                <Button variant="primary" as="a" href="https://github.com/sliit-foss" id="explore">
+                  Explore trending repos
+                </Button>
               </p>
             </div>
           </div>
