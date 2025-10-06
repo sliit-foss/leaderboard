@@ -1,7 +1,6 @@
-import { createHashHistory } from "history";
-import { Router, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { Flex } from "@primer/components";
+import { Box } from "@primer/react";
 import styled, { ThemeProvider } from "styled-components";
 import Toggle from "react-toggle";
 import useLocalState from "use-local-storage-state";
@@ -13,11 +12,6 @@ import { LightTheme, DarkTheme, GlobalStyles } from "./themes";
 import "./App.scss";
 import "../src/scss/toggleBtn.scss";
 
-/**
- * Create history object to pass into Router,
- * to allow navigating outside of react
- */
-const history = createHashHistory();
 const queryClient = new QueryClient();
 
 const StyledApp = styled.div``;
@@ -33,32 +27,31 @@ function App() {
     <div>
       <QueryClientProvider client={queryClient}>
         <Navbar />
-        <Flex
-          style={{
+        <Box
+          sx={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
           <Toggle className="mt-5" id="cheese-status" onChange={themeToggler} />
-        </Flex>
+        </Box>
         <ThemeProvider theme={theme === "light" ? LightTheme : DarkTheme}>
           <GlobalStyles />
           <StyledApp>
-            <Router history={history}>
-              <Switch>
+            <HashRouter>
+              <Routes>
                 {routes.map((route) => (
                   <Route
                     key={route.path}
-                    exact
                     path={route.path}
-                    component={route.component}
+                    element={<route.component />}
                   />
                 ))}
 
-                <Route key={""} exact path={""} component={HomePage} />
-              </Switch>
-            </Router>
+                <Route path="/" element={<HomePage />} />
+              </Routes>
+            </HashRouter>
             <Footer />
           </StyledApp>
         </ThemeProvider>
