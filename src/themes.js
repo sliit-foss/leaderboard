@@ -4,6 +4,10 @@ export const LightTheme = {
   body: "#fff",
   fontColor: "#000",
   tableColor: "#fff",
+  // Header colors
+  headerBg: "#ffffff",
+  headerText: "#24292f",
+  headerBorder: "#d0d7de",
   // PR Section colors
   prSectionBg: "linear-gradient(135deg, #f6f8fa 0%, #ffffff 100%)",
   prCardBg: "#ffffff",
@@ -20,6 +24,10 @@ export const DarkTheme = {
   body: "#171F24",
   fontColor: "#fff",
   tableColor: "#1C2A35",
+  // Header colors
+  headerBg: "#24292e",
+  headerText: "#ffffff",
+  headerBorder: "#30363d",
   // PR Section colors
   prSectionBg: "linear-gradient(135deg, #0d1117 0%, #161b22 100%)",
   prCardBg: "#161b22",
@@ -64,6 +72,20 @@ export const GlobalStyles = createGlobalStyle`
     }
     table{
         background-color: ${(props) => props.theme.tableColor};
+    }
+
+    // Header/Navbar
+    .sticky-header {
+        background-color: ${(props) => props.theme.headerBg} !important;
+        border-bottom: 1px solid ${(props) => props.theme.headerBorder};
+        
+        a, span {
+            color: ${(props) => props.theme.headerText} !important;
+        }
+        
+        svg {
+            color: ${(props) => props.theme.headerText} !important;
+        }
     }
 
     // Pending PRs Section
