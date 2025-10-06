@@ -1,5 +1,5 @@
 import { Avatar, AvatarStack, Box, Label, Pagination } from "@primer/react";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useGetAllContributors } from "../../queries/useGetContributors";
 import Loader from "../../assets/loader.gif";
 
@@ -11,10 +11,19 @@ function Table() {
     isError,
   } = useGetAllContributors();
 
-  const [currentPage] = useState<number>(1);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const itemsPerPage = 10;
 
-  const contributorsSize: number = contributorsAllList?.length as number | 0;
-  const pageCount: number = contributorsSize / 10;
+  const contributorsSize: number = contributorsAllList?.length || 0;
+  const pageCount: number = Math.ceil(contributorsSize / itemsPerPage);
+
+  // Calculate paginated data
+  const paginatedContributors = useMemo(() => {
+    if (!contributorsAllList) return [];
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return contributorsAllList.slice(startIndex, endIndex);
+  }, [contributorsAllList, currentPage]);
 
   return (
     <>
@@ -52,50 +61,71 @@ function Table() {
               )}
               {isSuccess && (
                 <tbody>
-                  {contributorsAllList?.map((r, i: number) => (
-                    <tr key={r?.login}>
-                      <th scope="row">{i + 1}</th>
-                      <td className="d-flex justify-content-start">
-                        <AvatarStack
-                          className={
-                            r?.login === "dependabot" ? "anim-pulse" : ""
-                          }
-                        >
-                          <Avatar src={r?.url} size={40} />
-                          <Avatar src="https://avatars.githubusercontent.com/github" size={40} />
-                        </AvatarStack>{" "}
-                        <a
-                          className="px-2 "
-                          href={`https://github.com/${r?.login}`}
-                          target={"_blank"}
-                          rel="noreferrer"
-                        >
-                          {r?.login}
-                        </a>
-                        {r?.login === "dependabot" && (
-                          <p className="text-left text-italic">
-                            : At least make contributions than I do!
-                          </p>
-                        )}
-                      </td>
-                      <td>
-                        <Label sx={{ bg: "#656BFE", m: 1 }}>
-                          {r?.points}
-                        </Label>
-                      </td>
-                    </tr>
-                  ))}
+                  {paginatedContributors.map((r, i: number) => {
+                    const globalRank = (currentPage - 1) * itemsPerPage + i + 1;
+                    return (
+                      <tr key={r?.login}>
+                        <th scope="row">{globalRank}</th>
+                        <td className="d-flex justify-content-start">
+                          <AvatarStack
+                            className={
+                              r?.login === "dependabot" ? "anim-pulse" : ""
+                            }
+                          >
+                            <Avatar src={r?.url} size={40} />
+                            <Avatar src="https://avatars.githubusercontent.com/github" size={40} />
+                          </AvatarStack>{" "}
+                          <a
+                            className="px-2 "
+                            href={`https://github.com/${r?.login}`}
+                            target={"_blank"}
+                            rel="noreferrer"
+                          >
+                            {r?.login}
+                          </a>
+                          {r?.login === "dependabot" && (
+                            <p className="text-left text-italic">
+                              : At least make contributions than I do!
+                            </p>
+                          )}
+                        </td>
+                        <td>
+                          <Label 
+                            variant="primary" 
+                            size="large"
+                            sx={{ 
+                              bg: "#656BFE",
+                              color: "#fff",
+                              fontWeight: "bold",
+                              fontSize: "16px",
+                              px: 3,
+                              py: 1,
+                              borderRadius: "20px"
+                            }}
+                          >
+                            {r?.points} pts
+                          </Label>
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               )}
             </table>
           </div>
-          <Box>
-            <Pagination
-              pageCount={pageCount | 1}
-              currentPage={currentPage | 1}
-              onPageChange={(e) => e.preventDefault()}
-            />
-          </Box>
+          {pageCount > 1 && (
+            <Box sx={{ display: "flex", justifyContent: "center", my: 4 }}>
+              <Pagination
+                pageCount={pageCount}
+                currentPage={currentPage}
+                onPageChange={(e, page) => {
+                  e.preventDefault();
+                  setCurrentPage(page);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+              />
+            </Box>
+          )}
         </div>
       </section>
     </>
