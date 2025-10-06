@@ -1,46 +1,4 @@
-import { Box, Label } from "@primer/react";
-import GitSvg from "../../../assets/HeroVector.svg";
-import "../../../scss/_hero.scss";
-
-function Hero() {
-  return (
-    <>
-      <Box sx={{ mt: 5 }}>
-        <Box p={0}>
-          <section className="fdb-block">
-            <div className="container">
-              <div className="row align-items-center">
-                <div className="col-12 col-md-6 mb-4 mb-md-0">
-                  <img alt="image" className="img-fluid" src={GitSvg} />
-                </div>
-                <div className="col-12 col-md-6 col-lg-5 ml-md-auto text-left">
-                  <h1> SLIIT FOSS GitHub Leaderboard</h1>
-                  <p>
-                    The following leaderboard shows the top github contributors
-                    of SLIIT FOSS. You can join this leaderboard by sending a
-                    Pull Request to any repository within{" "}
-                    <strong>
-                      <a href="https://github.com/sliit-foss/" target="_blank" rel="noreferrer">
-                        SLIIT FOSS GitHub Organization.{" "}
-                      </a>
-                    </strong>
-                    Scores will automatically updates when merging a Pull
-                    request.
-                    <br />
-                    <b>
-                      <Label variant="success" sx={{ mt: 3 }}>
-                        1 merged PR = 10 Points
-                      </Label>
-                    </b>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
-        </Box>
-      </Box>
-    </>
-  );
-}
+// This component is now deprecated, use the new Hero in components/layout
+import Hero from "../../../components/layout/Hero";
 
 export default Hero;

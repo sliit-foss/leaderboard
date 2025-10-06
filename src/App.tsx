@@ -1,40 +1,95 @@
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes, useLocation } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Box } from "@primer/react";
 import styled, { ThemeProvider } from "styled-components";
-import Toggle from "react-toggle";
 import useLocalState from "use-local-storage-state";
+import { Toaster } from "react-hot-toast";
+import { AnimatePresence, motion } from "framer-motion";
 import Footer from "./components/Common/Footer/Footer";
 import Navbar from "./components/Common/Navbar/Navbar";
 import HomePage from "./pages/HomePage/HomePage";
 import { routes } from "./routes/AppRoutes";
+import { ThemeToggle } from "./components/ui/ThemeToggle";
+import { pageTransition } from "./lib/animations";
+import { TOAST_CONFIG } from "./lib/constants";
 // @ts-expect-error - JS module without types
 import { LightTheme, DarkTheme, GlobalStyles } from "./themes.js";
 import "./App.scss";
-import "../src/scss/toggleBtn.scss";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: 1,
+      staleTime: 5 * 60 * 1000, // 5 minutes
+    },
+  },
+});
 
 const StyledApp = styled.div``;
 
+function AnimatedRoutes() {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        {routes.map((route) => (
+          <Route
+            key={route.path}
+            path={route.path}
+            element={
+              <motion.div
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                variants={pageTransition}
+              >
+                <route.component />
+              </motion.div>
+            }
+          />
+        ))}
+
+        <Route
+          path="/"
+          element={
+            <motion.div
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={pageTransition}
+            >
+              <HomePage />
+            </motion.div>
+          }
+        />
+      </Routes>
+    </AnimatePresence>
+  );
+}
+
 function App() {
   const [theme, setTheme] = useLocalState<string>("theme", {
-    defaultValue: "light"
+    defaultValue: "light",
   });
 
   const themeToggler = () => {
-    if (theme === "light") {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
+    setTheme(theme === "light" ? "dark" : "light");
   };
 
   return (
-    <div>
+    <div data-theme={theme}>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={theme === "light" ? LightTheme : DarkTheme}>
           <GlobalStyles />
+          <Toaster
+            position={TOAST_CONFIG.position}
+            toastOptions={{
+              duration: TOAST_CONFIG.duration,
+              style: TOAST_CONFIG.style,
+            }}
+          />
           <StyledApp>
             <Navbar />
             <Box
@@ -42,22 +97,13 @@ function App() {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
+                py: 3,
               }}
             >
-              <Toggle className="mt-5" id="cheese-status" onChange={themeToggler} />
+              <ThemeToggle theme={theme} onToggle={themeToggler} />
             </Box>
             <HashRouter>
-              <Routes>
-                {routes.map((route) => (
-                  <Route
-                    key={route.path}
-                    path={route.path}
-                    element={<route.component />}
-                  />
-                ))}
-
-                <Route path="/" element={<HomePage />} />
-              </Routes>
+              <AnimatedRoutes />
             </HashRouter>
             <Footer />
           </StyledApp>
