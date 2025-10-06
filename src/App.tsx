@@ -33,19 +33,19 @@ function App() {
   return (
     <div>
       <QueryClientProvider client={queryClient}>
-        <Navbar />
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Toggle className="mt-5" id="cheese-status" onChange={themeToggler} />
-        </Box>
         <ThemeProvider theme={theme === "light" ? LightTheme : DarkTheme}>
           <GlobalStyles />
           <StyledApp>
+            <Navbar />
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Toggle className="mt-5" id="cheese-status" onChange={themeToggler} />
+            </Box>
             <HashRouter>
               <Routes>
                 {routes.map((route) => (
