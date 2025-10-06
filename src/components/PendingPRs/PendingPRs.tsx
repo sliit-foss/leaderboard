@@ -44,42 +44,47 @@ function PendingPRs() {
 
           {isSuccess && pendingPRs && pendingPRs.length > 0 && (
             <Timeline>
-              {pendingPRs.map((pr) => (
-                <Timeline.Item key={pr.id}>
-                  <Timeline.Badge>
-                    <GitPullRequestIcon />
-                  </Timeline.Badge>
-                  <Timeline.Body>
-                    <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
-                      <Avatar src={pr.user.avatar_url} size={32} />
-                      <Box sx={{ flex: 1 }}>
-                        <a
-                          href={pr.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="pr-title"
-                        >
-                          {pr.title}
-                        </a>
-                        <Box sx={{ display: "flex", alignItems: "center", gap: 2, mt: 1 }}>
-                          <Label variant="accent">{pr.repository}</Label>
-                          <span className="text-muted">
-                            opened by{" "}
-                            <a
-                              href={`https://github.com/${pr.user.login}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              {pr.user.login}
-                            </a>{" "}
-                            {formatDate(pr.created_at)}
-                          </span>
+              {pendingPRs.map((pr) => {
+                // Extract repository name from repository_url
+                const repoName = pr.repository_url.split("/repos/")[1] || "";
+                
+                return (
+                  <Timeline.Item key={pr.id}>
+                    <Timeline.Badge>
+                      <GitPullRequestIcon />
+                    </Timeline.Badge>
+                    <Timeline.Body>
+                      <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
+                        <Avatar src={pr.user.avatar_url} size={32} />
+                        <Box sx={{ flex: 1 }}>
+                          <a
+                            href={pr.html_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="pr-title"
+                          >
+                            #{pr.number} {pr.title}
+                          </a>
+                          <Box sx={{ display: "flex", alignItems: "center", gap: 2, mt: 1 }}>
+                            <Label variant="accent">{repoName}</Label>
+                            <span className="text-muted">
+                              opened by{" "}
+                              <a
+                                href={pr.user.html_url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {pr.user.login}
+                              </a>{" "}
+                              {formatDate(pr.created_at)}
+                            </span>
+                          </Box>
                         </Box>
                       </Box>
-                    </Box>
-                  </Timeline.Body>
-                </Timeline.Item>
-              ))}
+                    </Timeline.Body>
+                  </Timeline.Item>
+                );
+              })}
             </Timeline>
           )}
 

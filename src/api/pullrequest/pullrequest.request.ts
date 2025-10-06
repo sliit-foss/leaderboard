@@ -2,12 +2,17 @@ import axios from "axios";
 import { PullRequest } from "../../models/pullrequest.model";
 
 const GITHUB_API_BASE_URL = "https://api.github.com";
-const REPO_OWNER = "sliit-foss";
-const REPO_NAME = "leaderboard";
+const ORG_NAME = "sliit-foss";
+
+interface GitHubSearchResponse {
+  items: PullRequest[];
+  total_count: number;
+}
 
 export const getPendingPRs = async (): Promise<PullRequest[]> => {
-  const response = await axios.get<PullRequest[]>(
-    `${GITHUB_API_BASE_URL}/repos/${REPO_OWNER}/${REPO_NAME}/pulls?state=open`
+  // Fetch all open PRs from the sliit-foss organization
+  const response = await axios.get<GitHubSearchResponse>(
+    `${GITHUB_API_BASE_URL}/search/issues?q=org:${ORG_NAME}+type:pr+state:open&sort=created&order=desc&per_page=100`
   );
-  return response.data;
+  return response.data.items;
 };
