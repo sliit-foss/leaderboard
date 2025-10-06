@@ -48,15 +48,14 @@ jobs:
         test -d dist/assets && echo "✓ assets directory exists" || echo "✗ assets directory missing"
     
     - name: Deploy to GitHub Pages (PR Preview)
-      uses: peaceiris/actions-gh-pages@v4
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
-        destination_dir: pr-${{ github.event.pull_request.number }}
-        keep_files: true
-        enable_jekyll: false
-        force_orphan: false
-        exclude_assets: ''
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: gh-pages
+        folder: dist
+        target-folder: pr-${{ github.event.pull_request.number }}
+        clean: false
+        single-commit: false
     
     - name: Comment PR with preview link
       uses: actions/github-script@v7
