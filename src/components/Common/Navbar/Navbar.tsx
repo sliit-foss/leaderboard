@@ -5,7 +5,7 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Header, Octicon } from "@primer/react";
+import { Header } from "@primer/react";
 import { MarkGithubIcon } from "@primer/octicons-react";
 import React from "react";
 import "../../../scss/_natbar.scss";
@@ -15,8 +15,8 @@ function Navbar() {
     <>
       <Header className="sticky-header">
         <Header.Item>
-          <Header.Link href="/" fontSize={2}>
-            <Octicon icon={MarkGithubIcon} size={32} sx={{ mr: 2 }} />
+          <Header.Link href="/" fontSize={2} sx={{ display: "flex", alignItems: "center" }}>
+            <MarkGithubIcon size={32} style={{ marginRight: "8px" }} />
             <span>SLIIT FOSS GitHub Leaderboard</span>
           </Header.Link>
         </Header.Item>
