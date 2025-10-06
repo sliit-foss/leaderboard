@@ -114,10 +114,32 @@ function Table() {
                   })}
                   {/* Add empty rows to maintain consistent table height */}
                   {Array.from({ length: emptyRowsCount }).map((_, i) => (
-                    <tr key={`empty-${i}`} style={{ height: "73px" }}>
-                      <th scope="row" style={{ opacity: 0.3 }}>-</th>
-                      <td style={{ opacity: 0.3 }}>-</td>
-                      <td style={{ opacity: 0.3 }}>-</td>
+                    <tr key={`empty-${i}`}>
+                      <th scope="row" style={{ visibility: "hidden" }}>-</th>
+                      <td className="d-flex justify-content-start" style={{ visibility: "hidden" }}>
+                        <AvatarStack>
+                          <Avatar src="" size={40} />
+                          <Avatar src="" size={40} />
+                        </AvatarStack>
+                        <span className="px-2">Placeholder</span>
+                      </td>
+                      <td style={{ visibility: "hidden" }}>
+                        <Label 
+                          variant="primary" 
+                          size="large"
+                          sx={{ 
+                            bg: "#656BFE",
+                            color: "#fff",
+                            fontWeight: "bold",
+                            fontSize: "16px",
+                            px: 3,
+                            py: 1,
+                            borderRadius: "20px"
+                          }}
+                        >
+                          0 pts
+                        </Label>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
