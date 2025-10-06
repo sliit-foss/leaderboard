@@ -4,7 +4,6 @@ import { GitPullRequestIcon } from "@primer/octicons-react";
 import { useGetPendingPRs } from "../../queries/useGetPendingPRs";
 import { PRCard } from "./PRCard";
 import { SkeletonCard } from "../ui/SkeletonLoader";
-import { LoadingSpinner } from "../ui/LoadingSpinner";
 import { staggerContainer, staggerItem, fadeIn } from "../../lib/animations";
 import "./PRList.scss";
 
