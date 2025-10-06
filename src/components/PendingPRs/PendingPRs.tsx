@@ -1,5 +1,5 @@
-import { Avatar, Label, Box, Timeline } from "@primer/react";
-import { GitPullRequestIcon } from "@primer/octicons-react";
+import { Avatar, Label, Box } from "@primer/react";
+import { GitPullRequestIcon, ClockIcon } from "@primer/octicons-react";
 import { useGetPendingPRs } from "../../queries/useGetPendingPRs";
 import Loader from "../../assets/loader.gif";
 import "./PendingPRs.scss";
@@ -24,73 +24,87 @@ function PendingPRs() {
     <section className="fdb-block pending-prs-section">
       <div className="container">
         <Box sx={{ py: 5 }}>
-          <h2 className="text-center mb-4">Pending Pull Requests</h2>
-          <p className="text-center text-muted mb-5">
-            Review and merge these outstanding contributions
-          </p>
+          <div className="section-header">
+            <h2 className="section-title">
+              <GitPullRequestIcon size={28} />
+              Pending Pull Requests
+            </h2>
+            <p className="section-subtitle">
+              Review and merge outstanding contributions from the community
+            </p>
+          </div>
 
           {isLoading && (
-            <div className="text-center">
-              <img src={Loader} width="40px" alt="Loading..." />
-              <p className="text-muted mt-2">Loading pending PRs...</p>
+            <div className="loading-container">
+              <img src={Loader} width="50px" alt="Loading..." />
+              <p className="loading-text">Fetching pending PRs...</p>
             </div>
           )}
 
           {isError && (
-            <div className="flash mt-3 flash-error">
-              Failed to fetch pending pull requests
+            <div className="error-message">
+              <span>⚠️ Failed to fetch pending pull requests</span>
             </div>
           )}
 
           {isSuccess && pendingPRs && pendingPRs.length > 0 && (
-            <Timeline>
+            <div className="pr-grid">
               {pendingPRs.map((pr) => {
                 // Extract repository name from repository_url
                 const repoName = pr.repository_url.split("/repos/")[1] || "";
+                const repoShortName = repoName.split("/")[1] || repoName;
                 
                 return (
-                  <Timeline.Item key={pr.id}>
-                    <Timeline.Badge>
-                      <GitPullRequestIcon />
-                    </Timeline.Badge>
-                    <Timeline.Body>
-                      <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
-                        <Avatar src={pr.user.avatar_url} size={32} />
-                        <Box sx={{ flex: 1 }}>
-                          <a
-                            href={pr.html_url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="pr-title"
-                          >
-                            #{pr.number} {pr.title}
-                          </a>
-                          <Box sx={{ display: "flex", alignItems: "center", gap: 2, mt: 1 }}>
-                            <Label variant="accent">{repoName}</Label>
-                            <span className="text-muted">
-                              opened by{" "}
-                              <a
-                                href={pr.user.html_url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                {pr.user.login}
-                              </a>{" "}
-                              {formatDate(pr.created_at)}
-                            </span>
-                          </Box>
-                        </Box>
-                      </Box>
-                    </Timeline.Body>
-                  </Timeline.Item>
+                  <div key={pr.id} className="pr-card">
+                    <div className="pr-card-header">
+                      <div className="pr-meta">
+                        <GitPullRequestIcon size={16} className="pr-icon" />
+                        <span className="pr-number">#{pr.number}</span>
+                        <Label variant="accent" size="small" className="repo-label">
+                          {repoShortName}
+                        </Label>
+                      </div>
+                    </div>
+
+                    <div className="pr-card-body">
+                      <a
+                        href={pr.html_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="pr-title"
+                      >
+                        {pr.title}
+                      </a>
+                    </div>
+
+                    <div className="pr-card-footer">
+                      <div className="pr-author">
+                        <Avatar src={pr.user.avatar_url} size={24} />
+                        <a
+                          href={pr.user.html_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="author-link"
+                        >
+                          {pr.user.login}
+                        </a>
+                      </div>
+                      <div className="pr-time">
+                        <ClockIcon size={14} />
+                        <span>{formatDate(pr.created_at)}</span>
+                      </div>
+                    </div>
+                  </div>
                 );
               })}
-            </Timeline>
+            </div>
           )}
 
           {isSuccess && pendingPRs && pendingPRs.length === 0 && (
-            <div className="text-center text-muted py-5">
-              <p>🎉 No pending pull requests at the moment!</p>
+            <div className="empty-state">
+              <div className="empty-icon">🎉</div>
+              <h3>All caught up!</h3>
+              <p>No pending pull requests at the moment</p>
             </div>
           )}
         </Box>

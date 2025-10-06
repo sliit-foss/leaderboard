@@ -1,28 +1,260 @@
 .pending-prs-section {
-  background-color: #f6f8fa;
+  background: linear-gradient(135deg, #f6f8fa 0%, #ffffff 100%);
+  min-height: 400px;
 
-  .pr-title {
-    font-weight: 600;
-    font-size: 16px;
-    text-decoration: none;
-    color: #0969da;
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
 
-    &:hover {
-      text-decoration: underline;
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      color: #24292f;
+
+      svg {
+        color: #656BFE;
+      }
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: #57606a;
+      font-weight: 400;
+      margin: 0;
     }
   }
 
-  .text-muted {
-    color: #57606a;
-    font-size: 14px;
+  .loading-container {
+    text-align: center;
+    padding: 4rem 0;
+
+    .loading-text {
+      margin-top: 1rem;
+      color: #57606a;
+      font-size: 1rem;
+    }
   }
 
-  a {
-    color: #0969da;
-    text-decoration: none;
+  .error-message {
+    background: #fff1f0;
+    border: 1px solid #ff8182;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    color: #d1242f;
+    font-weight: 500;
+  }
+
+  .pr-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .pr-card {
+    background: #ffffff;
+    border: 1px solid #d0d7de;
+    border-radius: 12px;
+    padding: 1.25rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 
     &:hover {
-      text-decoration: underline;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(101, 107, 254, 0.12);
+      border-color: #656BFE;
+    }
+
+    .pr-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.875rem;
+
+      .pr-meta {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.875rem;
+
+        .pr-icon {
+          color: #656BFE;
+        }
+
+        .pr-number {
+          font-weight: 600;
+          color: #57606a;
+        }
+
+        .repo-label {
+          font-size: 0.75rem;
+          padding: 0.125rem 0.5rem;
+        }
+      }
+    }
+
+    .pr-card-body {
+      margin-bottom: 1rem;
+
+      .pr-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #24292f;
+        text-decoration: none;
+        display: block;
+        line-height: 1.5;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: #656BFE;
+        }
+      }
+    }
+
+    .pr-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.875rem;
+      border-top: 1px solid #f6f8fa;
+
+      .pr-author {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        .author-link {
+          font-size: 0.875rem;
+          font-weight: 500;
+          color: #24292f;
+          text-decoration: none;
+          transition: color 0.2s ease;
+
+          &:hover {
+            color: #656BFE;
+          }
+        }
+      }
+
+      .pr-time {
+        display: flex;
+        align-items: center;
+        gap: 0.375rem;
+        font-size: 0.8125rem;
+        color: #57606a;
+
+        svg {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 2px dashed #d0d7de;
+    margin-top: 2rem;
+
+    .empty-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #24292f;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #57606a;
+      margin: 0;
+    }
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  // Dark mode support
+  @media (prefers-color-scheme: dark) {
+    background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+
+    .section-header {
+      .section-title {
+        color: #f0f6fc;
+      }
+
+      .section-subtitle {
+        color: #8b949e;
+      }
+    }
+
+    .pr-card {
+      background: #161b22;
+      border-color: #30363d;
+
+      &:hover {
+        border-color: #656BFE;
+        box-shadow: 0 8px 24px rgba(101, 107, 254, 0.2);
+      }
+
+      .pr-card-body .pr-title {
+        color: #f0f6fc;
+      }
+
+      .pr-card-footer {
+        border-top-color: #21262d;
+
+        .pr-author .author-link {
+          color: #f0f6fc;
+        }
+
+        .pr-time {
+          color: #8b949e;
+        }
+      }
+    }
+
+    .empty-state {
+      background: #161b22;
+      border-color: #30363d;
+
+      h3 {
+        color: #f0f6fc;
+      }
+
+      p {
+        color: #8b949e;
+      }
+    }
+  }
+
+  // Responsive design
+  @media (max-width: 768px) {
+    .pr-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .section-header .section-title {
+      font-size: 1.5rem;
     }
   }
 }
