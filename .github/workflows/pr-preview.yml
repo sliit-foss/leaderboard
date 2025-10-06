@@ -35,8 +35,8 @@ jobs:
       run: pnpm build
       env:
         CI: false
-        # Set base path for PR preview
-        VITE_BASE_PATH: /leaderboard/pr-${{ github.event.pull_request.number }}/
+        # Set base path for PR preview (custom domain doesn't need /leaderboard prefix)
+        VITE_BASE_PATH: /pr-${{ github.event.pull_request.number }}/
     
     - name: Deploy to GitHub Pages (PR Preview)
       uses: peaceiris/actions-gh-pages@v4
@@ -51,7 +51,7 @@ jobs:
       with:
         script: |
           const prNumber = context.payload.pull_request.number;
-          const previewUrl = `https://sliit-foss.github.io/leaderboard/pr-${prNumber}/`;
+          const previewUrl = `https://leaderboard.sliitfoss.org/pr-${prNumber}/`;
           
           const comment = `## 🚀 Preview Deployment
           
