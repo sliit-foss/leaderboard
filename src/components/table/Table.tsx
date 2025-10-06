@@ -41,7 +41,12 @@ function Table() {
             {/*  <Button variant="primary" sx={{ m: 2 }}>Board Members</Button>*/}
             {/*</Box>*/}
 
-            <table className="table table-bordered table-hover">
+            <table className="table table-bordered table-hover" style={{ tableLayout: "fixed" }}>
+              <colgroup>
+                <col style={{ width: "10%" }} />
+                <col style={{ width: "65%" }} />
+                <col style={{ width: "25%" }} />
+              </colgroup>
               <thead className="thead-light">
                 <tr>
                   <th scope="col">Rank</th>
