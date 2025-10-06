@@ -78,9 +78,6 @@ function App() {
     setTheme(theme === "light" ? "dark" : "light");
   };
 
-  // Get base path from Vite config (set during build for PR previews)
-  const basename = import.meta.env.BASE_URL;
-
   return (
     <div data-theme={theme}>
       <QueryClientProvider client={queryClient}>
@@ -105,7 +102,7 @@ function App() {
             >
               <ThemeToggle theme={theme} onToggle={themeToggler} />
             </Box>
-            <BrowserRouter basename={basename}>
+            <BrowserRouter>
               <AnimatedRoutes />
             </BrowserRouter>
             <Footer />
