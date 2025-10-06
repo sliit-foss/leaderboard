@@ -18,7 +18,9 @@ const queryClient = new QueryClient();
 const StyledApp = styled.div``;
 
 function App() {
-  const [theme, setTheme] = useLocalState<string>("theme", { defaultValue: "light" });
+  const [theme, setTheme] = useLocalState("theme", {
+    defaultValue: "light"
+  });
 
   const themeToggler = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
