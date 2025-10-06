@@ -1,4 +1,4 @@
-import { Avatar, AvatarStack, Label, Pagination } from "@primer/react";
+import { Avatar, Label, Pagination } from "@primer/react";
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useGetAllContributors } from "../../queries/useGetContributors";
@@ -154,15 +154,18 @@ function LeaderboardTable() {
                               whileHover={{ scale: 1.1 }}
                               transition={{ type: "spring", stiffness: 400 }}
                             >
-                              <AvatarStack
-                                className={contributor?.login === "dependabot" ? "anim-pulse" : ""}
-                              >
-                                <Avatar src={contributor?.url} size={48} />
+                              <div className="avatar-wrapper">
+                                <Avatar 
+                                  src={contributor?.url} 
+                                  size={48}
+                                  className={contributor?.login === "dependabot" ? "anim-pulse" : ""}
+                                />
                                 <Avatar
                                   src="https://avatars.githubusercontent.com/github"
-                                  size={48}
+                                  size={20}
+                                  className="github-badge"
                                 />
-                              </AvatarStack>
+                              </div>
                             </motion.div>
                             
                             <div className="contributor-info">

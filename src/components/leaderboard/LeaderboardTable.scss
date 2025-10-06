@@ -141,6 +141,21 @@
 
     .contributor-avatar {
       flex-shrink: 0;
+      position: relative;
+
+      .avatar-wrapper {
+        position: relative;
+        display: inline-block;
+
+        .github-badge {
+          position: absolute;
+          bottom: -2px;
+          right: -2px;
+          border: 2px solid var(--surface, #ffffff);
+          border-radius: 50%;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+      }
     }
 
     .contributor-info {
