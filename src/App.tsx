@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Box } from "@primer/react";
+// import { Box } from "@primer/react";
 import styled, { ThemeProvider } from "styled-components";
 import useLocalState from "use-local-storage-state";
 import { Toaster } from "react-hot-toast";
@@ -9,7 +9,7 @@ import Footer from "./components/Common/Footer/Footer";
 import Navbar from "./components/Common/Navbar/Navbar";
 import HomePage from "./pages/HomePage/HomePage";
 import { routes } from "./routes/AppRoutes";
-import { ThemeToggle } from "./components/ui/ThemeToggle";
+// import { ThemeToggle } from "./components/ui/ThemeToggle";
 import { pageTransition } from "./lib/animations";
 import { TOAST_CONFIG } from "./lib/constants";
 // @ts-expect-error - JS module without types
@@ -91,17 +91,7 @@ function App() {
             }}
           />
           <StyledApp>
-            <Navbar />
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                py: 3,
-              }}
-            >
-              <ThemeToggle theme={theme} onToggle={themeToggler} />
-            </Box>
+            <Navbar theme={theme} onToggle={themeToggler} />
             <BrowserRouter>
               <AnimatedRoutes />
             </BrowserRouter>
@@ -114,3 +104,4 @@ function App() {
 }
 
 export default App;
+
