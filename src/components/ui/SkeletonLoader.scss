@@ -1,0 +1,64 @@
+.skeleton-loader {
+  background: linear-gradient(
+    90deg,
+    rgba(200, 200, 200, 0.2) 25%,
+    rgba(200, 200, 200, 0.3) 50%,
+    rgba(200, 200, 200, 0.2) 75%
+  );
+  background-size: 200% 100%;
+  border-radius: 0.5rem;
+  display: inline-block;
+
+  &.skeleton-circle {
+    border-radius: 50%;
+  }
+}
+
+[data-theme="dark"] .skeleton-loader {
+  background: linear-gradient(
+    90deg,
+    rgba(50, 50, 50, 0.2) 25%,
+    rgba(50, 50, 50, 0.3) 50%,
+    rgba(50, 50, 50, 0.2) 75%
+  );
+}
+
+.skeleton-text-wrapper {
+  width: 100%;
+  
+  .skeleton-loader {
+    display: block;
+    margin-bottom: 0.5rem;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.skeleton-card {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid var(--border-color, #e5e7eb);
+  background: var(--card-bg, #ffffff);
+
+  .skeleton-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .skeleton-card-info {
+    flex: 1;
+  }
+
+  .skeleton-card-body {
+    margin-top: 1rem;
+  }
+}
+
+[data-theme="dark"] .skeleton-card {
+  border-color: #334155;
+  background: #1e293b;
+}

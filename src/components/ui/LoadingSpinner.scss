@@ -1,0 +1,31 @@
+.loading-spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.loading-spinner {
+  border: 3px solid rgba(101, 107, 254, 0.1);
+  border-top-color: #656BFE;
+  border-radius: 50%;
+}
+
+.loading-text {
+  color: var(--text-secondary, #6b7280);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+[data-theme="dark"] {
+  .loading-spinner {
+    border-color: rgba(129, 140, 248, 0.1);
+    border-top-color: #818CF8;
+  }
+
+  .loading-text {
+    color: #94a3b8;
+  }
+}

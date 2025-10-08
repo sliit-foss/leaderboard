@@ -1,0 +1,250 @@
+.pr-list-section {
+  padding: 3rem 0;
+  background: var(--background, #ffffff);
+}
+
+.pr-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+
+  .pr-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex: 1;
+  }
+
+  .pr-icon-bg {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #656BFE, #818CF8);
+    border-radius: 1rem;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 0 0.5rem;
+    background: linear-gradient(135deg, #656BFE 0%, #A78BFA 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary, #6b7280);
+    margin: 0;
+  }
+
+  .pr-count-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #656BFE, #818CF8);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 8px 16px rgba(101, 107, 254, 0.3);
+    min-width: 100px;
+
+    .count-number {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .count-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 0.25rem;
+    }
+  }
+}
+
+.pr-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.pr-loading {
+  .pr-grid {
+    opacity: 0.6;
+  }
+}
+
+.pr-error-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--surface, #f9fafb);
+  border-radius: 1rem;
+  border: 1px solid var(--border, #e5e7eb);
+
+  .error-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary, #111827);
+  }
+
+  p {
+    color: var(--text-secondary, #6b7280);
+    margin: 0;
+  }
+}
+
+.pr-empty-state {
+  text-align: center;
+  padding: 5rem 2rem;
+  background: var(--surface, #f9fafb);
+  border-radius: 1rem;
+  border: 1px solid var(--border, #e5e7eb);
+
+  .empty-icon {
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+  }
+
+  h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary, #111827);
+  }
+
+  p {
+    font-size: 1.125rem;
+    color: var(--text-secondary, #6b7280);
+    margin: 0.5rem 0;
+
+    &.empty-subtext {
+      font-size: 0.875rem;
+      margin-top: 1rem;
+    }
+  }
+}
+
+// Dark theme
+[data-theme="dark"] {
+  .pr-list-section {
+    background: #0f172a;
+  }
+
+  .pr-section-header {
+    .section-subtitle {
+      color: #94a3b8;
+    }
+  }
+
+  .pr-error-state,
+  .pr-empty-state {
+    background: #1e293b;
+    border-color: #334155;
+
+    h3 {
+      color: #f1f5f9;
+    }
+
+    p {
+      color: #94a3b8;
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 1024px) {
+  .pr-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .pr-section-header {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .pr-title-wrapper {
+      width: 100%;
+    }
+
+    .pr-icon-bg {
+      width: 56px;
+      height: 56px;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.875rem;
+    }
+
+    .pr-count-badge {
+      align-self: flex-start;
+    }
+  }
+
+  .pr-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pr-list-section {
+    padding: 2rem 0;
+  }
+
+  .pr-section-header {
+    margin-bottom: 2rem;
+
+    .pr-title-wrapper {
+      gap: 1rem;
+    }
+
+    .pr-icon-bg {
+      width: 48px;
+      height: 48px;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+    }
+  }
+
+  .pr-empty-state {
+    padding: 3rem 1.5rem;
+
+    .empty-icon {
+      font-size: 3rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+}
