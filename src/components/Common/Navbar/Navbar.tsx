@@ -7,9 +7,15 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Header } from "@primer/react";
 import { MarkGithubIcon } from "@primer/octicons-react";
+import { ThemeToggle } from "../../ui/ThemeToggle";
 import "../../../scss/_natbar.scss";
 
-function Navbar() {
+interface NavbarProps {
+  theme: string;
+  onToggle: () => void;
+}
+
+function Navbar({ theme, onToggle }: NavbarProps) {
   return (
     <>
       <Header className="sticky-header">
@@ -20,6 +26,9 @@ function Navbar() {
           </Header.Link>
         </Header.Item>
         <Header.Item full />
+        <Header.Item>
+          <ThemeToggle theme={theme} onToggle={onToggle} />
+        </Header.Item>
         <Header.Link href="https://github.com/sliit-foss" target="blank" sx={{ mr: 2 }}>
           <FontAwesomeIcon icon={faGithub} />
         </Header.Link>
@@ -46,3 +55,4 @@ function Navbar() {
 }
 
 export default Navbar;
+
